@@ -12,7 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Close } from "@mui/icons-material";
 import Link from "next/link";
 import CustomAccordion from "./CustomAccordion";
-import { IconButton } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
@@ -47,7 +47,8 @@ export default function MainDrawer({ className, links }: MainDrawerProps) {
           <ListItem key={link.text} disablePadding>
             {"children" in link ? (
               <CustomAccordion
-                items={link.children!}
+                text={link.text}
+                childrenLinks={link.children!}
                 onClick={toggleDrawer(false)}
                 onKeyDown={toggleDrawer(false)}
               />
@@ -57,12 +58,15 @@ export default function MainDrawer({ className, links }: MainDrawerProps) {
                 href={`/${link.url}`}
                 onClick={toggleDrawer(false)}
                 onKeyDown={toggleDrawer(false)}
+                sx={{justifyContent:"center"}}
               >
-                <ListItemText
-                  disableTypography
-                  primary={link.text}
-                  sx={{ fontSize: 12, color: "black", textAlign: "center" }}
-                />
+                <Typography>
+                  <ListItemText
+                    disableTypography
+                    primary={link.text}
+                    sx={{ fontSize: 14, color: "black", textAlign: "center" }}
+                  />
+                </Typography>
               </ListItemButton>
             )}
           </ListItem>

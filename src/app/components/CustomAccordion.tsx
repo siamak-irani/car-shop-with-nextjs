@@ -10,7 +10,8 @@ import Link from "next/link";
 import React from "react";
 
 type CustomAccordionProps = {
-  items: NavLink[];
+  text: string;
+  childrenLinks: NavLink[];
   onClick: (event: React.KeyboardEvent | React.MouseEvent) => void;
   onKeyDown: (event: React.KeyboardEvent | React.MouseEvent) => void;
 };
@@ -57,7 +58,7 @@ const CustomAccordion = (props: CustomAccordionProps) => {
           <Typography>
             <ListItemText
               disableTypography
-              primary={"test"}
+              primary={props.text}
               sx={{
                 fontSize: "14px !important",
                 color: "black",
@@ -66,7 +67,7 @@ const CustomAccordion = (props: CustomAccordionProps) => {
             />
           </Typography>
         </AccordionSummary>
-        {props.items.map((i) => {
+        {props.childrenLinks.map((i) => {
           return (
             <AccordionDetails
               onClick={props.onClick}
