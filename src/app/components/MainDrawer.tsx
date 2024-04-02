@@ -54,11 +54,12 @@ export default function MainDrawer({ className, links }: MainDrawerProps) {
               />
             ) : (
               <ListItemButton
+                disableRipple
                 component={Link}
                 href={`/${link.url}`}
                 onClick={toggleDrawer(false)}
                 onKeyDown={toggleDrawer(false)}
-                sx={{justifyContent:"center"}}
+                sx={{ justifyContent: "center" }}
               >
                 <Typography>
                   <ListItemText
